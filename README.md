@@ -1,18 +1,18 @@
 # Photoneo camera calibration and Isaac frame registration
 
 I've been working on mounting a Photoneo camera to my TM5 arm and getting its
-position into Isaac. I've put the calibration code, saved results and numerical
-inputs here so others can see what I did and try the fit themselves.
+position into Isaac. Here is the calibration code, saved results and numerical
+inputs here so others can see what I did and try the fit themselves or adapt
+to their own calibrations porblems.
 
 I used a Python workflow built around OpenCV and SciPy. The saved fit can be
 replayed without connecting to the arm or camera. I've also included the scripts
 I used for the camera's CAD placement and wrist attachment in Isaac.
 
-I've kept the repo private for now, so you'll need access through GitHub.
 
 ## How I calibrated it
 
-I started with the official TM printed board underneath both cameras, using the
+Starting with the official TM-robotics printed board underneath both cameras, using the
 arm's existing eye-in-hand (EIH) factory calibration to line up the observations.
 I then fitted the Photoneo-to-flange transform directly from measured board points
 and recorded arm poses: seven usable tilted views and eight translation views.
