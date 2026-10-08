@@ -17,8 +17,9 @@ arm's existing eye-in-hand (EIH) factory calibration to line up the observations
 I then fitted the Photoneo-to-flange transform directly from measured board points
 and recorded arm poses: seven usable tilted views and eight translation views.
 
-I used OpenCV's PARK/HORAUD hand-eye methods for the starting estimates, then
-refined the fit with SciPy using metric 3D least squares and a 0.3 mm soft-L1 loss.
+I calculated PARK and HORAUD hand-eye estimates with OpenCV. I used PARK to start
+the tilt fit and kept HORAUD for comparison, then refined the fit with SciPy using
+metric 3D least squares and a 0.3 mm soft-L1 loss.
 I fitted a separate board pose for each capture session, so moving the board
 between sessions was fine. I assumed the camera mount stayed fixed.
 

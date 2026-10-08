@@ -1,4 +1,4 @@
-"""Replay our saved Photoneo hand-eye fit using original fitting functions, offline."""
+"""Replay my saved Photoneo hand-eye fit using original fitting functions, offline."""
 import argparse
 import json
 from pathlib import Path
@@ -30,7 +30,7 @@ def main():
     if difference['origin_difference_mm'] > .001 or difference['rotation_difference_deg'] > .0001:
         raise ValueError('Saved calibration was not reproduced: '+str(difference))
     report = {
-        'software': 'Custom Python; OpenCV PARK/HORAUD initialisation, SciPy soft-L1 metric refinement',
+        'software': 'Custom Python; OpenCV PARK initialisation with HORAUD comparison, SciPy soft-L1 metric refinement',
         'manufacturer_robot_calibration_tool_used': False,
         'T_flange_photoneo': fitted.tolist(), 'units': 'mm',
         'convention': 'T_A_B maps homogeneous column-vector points from B into A',
