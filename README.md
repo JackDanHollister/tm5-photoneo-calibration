@@ -36,6 +36,9 @@ centre, mounting-hole centre or centre of mass. The origin is approximately
 ## Reproduce the saved fit
 
 Tested using Python on Linux. Original modules use the Unix `resource` library.
+Requirements retain the OpenCV4 Python API used by the original fitting code.
+The OpenCV5.0.0.93 wheel selected by the first CI installation lacked
+`cv2.calibrateHandEye`; see the [upstream issue](https://github.com/opencv/opencv/issues/29565).
 
 ```bash
 python3 -m pip install -r requirements.txt
