@@ -1,26 +1,30 @@
 # Photoneo camera calibration and Isaac frame registration
 
-This focused code package accompanies the installed-camera screenshot. The
-transform was estimated using our own Python workflow, not the manufacturer's
-robot-calibration tool. No SDK/controller binaries or specimen images are included.
+I've been working on mounting a Photoneo camera to my TM5 arm and getting its
+position into Isaac. I've put the calibration code, saved results and numerical
+inputs here so others can see what I did and try the fit themselves.
 
-The repository is private. The owner must grant your GitHub account access.
-[Draft reply to the two software/code questions](DEVELOPER_REPLY.md).
+I used a Python workflow built around OpenCV and SciPy. The saved fit can be
+replayed without connecting to the arm or camera. I've also included the scripts
+I used for the camera's CAD placement and wrist attachment in Isaac.
 
-## Method
+I've kept the repo private for now, so you'll need access through GitHub.
 
-The initial camera-to-camera fit used the official TM printed board seen by both
-the robot EIH camera and Photoneo, with the existing EIH factory intrinsics/hand-eye.
-The later direct sensor-to-flange fit used measured Photoneo board points and
-recorded robot flange poses: seven usable tilt views plus eight translation views.
-OpenCV PARK/HORAUD initial estimates were refined using SciPy metric 3D least
-squares with a0.3mm soft-L1 loss. Separate fixed board poses were fitted for the
-translation and tilt batches; the board did not have to remain in the same pose
-between sessions. The camera mount was assumed unchanged.
+## How I calibrated it
 
-The direct numerical fit uses Photoneo/robot observations. EIH observations helped
-establish printed-point identities; EIH hand-eye was not a numerical pose prior
-in the final direct fit.
+I started with the official TM printed board underneath both cameras, using the
+arm's existing eye-in-hand (EIH) factory calibration to line up the observations.
+I then fitted the Photoneo-to-flange transform directly from measured board points
+and recorded arm poses: seven usable tilted views and eight translation views.
+
+I used OpenCV's PARK/HORAUD hand-eye methods for the starting estimates, then
+refined the fit with SciPy using metric 3D least squares and a 0.3 mm soft-L1 loss.
+I fitted a separate board pose for each capture session, so moving the board
+between sessions was fine. I assumed the camera mount stayed fixed.
+
+The final direct fit uses the Photoneo measurements and robot poses. The EIH
+observations helped identify the printed board points; I didn't use its hand-eye
+transform as a numerical pose prior in that final fit.
 
 For homogeneous column vectors in millimetres:
 
@@ -29,16 +33,14 @@ p_base = T_base_flange @ T_flange_photoneo @ p_primary_camera
 ```
 
 `T_flange_photoneo` maps the saved **CameraSpace / PrimaryCamera optical frame**
-into the robot flange frame. It is not a transform to the housing bounding-box
-centre, mounting-hole centre or centre of mass. The origin is approximately
-(-86.90, -97.60,80.58)mm in flange coordinates; full rotation is retained.
+into the robot flange frame. The optical origin comes out at roughly
+(-86.90, -97.60, 80.58) mm in flange coordinates, with the full rotation included.
+That origin is different from the housing centre, mounting holes and centre of mass.
 
-## Reproduce the saved fit
+## Run the saved fit
 
-Tested using Python on Linux. Original modules use the Unix `resource` library.
-Requirements retain the OpenCV4 Python API used by the original fitting code.
-The OpenCV5.0.0.93 wheel selected by the first CI installation lacked
-`cv2.calibrateHandEye`; see the [upstream issue](https://github.com/opencv/opencv/issues/29565).
+I've tested this with Python on Linux. The original modules use the Unix
+`resource` library, and the requirements keep OpenCV on the 4.x Python API.
 
 ```bash
 python3 -m pip install -r requirements.txt
@@ -46,50 +48,58 @@ python3 replay_saved_fit.py
 python3 -m unittest discover -s source/calibration -p 'test_tilt_calibration.py'
 ```
 
-The replay uses the supplied numerical correspondences, computes an initial
-tilt fit and runs the original two-batch joint fit. It compares its result with
-the saved estimate and writes `replayed_fit.json`. It imports no controller or
-camera acquisition modules and blocks network connections during fitting.
+The replay starts with the saved numerical observations, fits the tilted views,
+then runs the combined two-session fit. It checks the result against my saved
+estimate and writes `replayed_fit.json`. It doesn't load the controller or camera
+acquisition modules, and it blocks network connections while fitting.
 
-`source/calibration/` preserves the original fitting, corner/plane processing,
-relative-camera alignment and sensitivity code byte-for-byte. The replay runs
-without raw acquisition files. Original image-processing command-line entrypoints
-require their original dataset layout; those raw images/point clouds are not in
-this focused package. `data/provenance.json` describes the numerical export.
+## What's in here
 
-## Isaac/CAD relationship
+- `source/calibration/`: my original fitting, board-corner/plane processing,
+  camera alignment and sensitivity code, along with the numerical tests.
+- `data/`: the numerical inputs for the replay and a note on how I exported them.
+- `results/`: the saved transform, diagnostics and camera-body registration.
+- `source/isaac_reference/`: the CAD/frame-registration and moving wrist scripts.
 
-The housing shape is the manufacturer's MotionCam-3D Color S CAD mesh. Its
-native coordinates were retained. The nominal relationship between the vendor
-sensor mesh and PrimaryCamera frame was checked against the vendor ROS
-description, saved frame metadata and optical rays/front windows. CAD was not
-recentred on its bounding-box centre.
+The replay works from the supplied numerical inputs. Running the original image
+processing from scratch needs the original capture layout and raw images/point
+clouds, which aren't included here. The Isaac reference scripts also need the
+robot/vendor assets and Isaac environment they were written for.
 
-The full calibrated flange-relative rotation places the camera at its actual
-unusual mounting angle, approximately22.563° between optical +Z and flange +Z.
-The later moving Isaac model attaches it to the wrist without the early static
-preview's snapshot-only flange correction. URDF/XRDF/USD update the attached
-camera consistently; QC/gripper stack extension is23.15mm.
+I've kept the original source files unchanged. `source-identities.json` records
+their hashes, and `SHA256SUMS` lets you check the files in this repo.
 
-`source/isaac_reference/` contains original CAD/frame-registration and moving
-wrist-model scripts as reference. They retain workspace/Isaac/vendor-asset
-dependencies and are not standalone launchers. Manufacturer mesh provenance and
-source URLs are in `results/photoneo_body_registration.json`; CAD/robot assets
-and Isaac binaries are not redistributed in this focused package.
+## How I placed the camera in Isaac
 
-## Results and limitations
+I used the manufacturer's MotionCam-3D Color S housing mesh and kept its native
+coordinates. I checked the relationship between that mesh and the PrimaryCamera
+frame against the vendor ROS description, saved frame metadata and the optical
+rays through the front windows. I kept the optical origin rather than moving the
+mesh origin to the centre of the housing.
 
-The fifteen-view fit gives0.3321338mm RMS over2,104 points. The largest measured
-leave-one-view-out mapped-point shift was2.390mm RMS. These are consistency and
-sensitivity diagnostics, not absolute-accuracy guarantees. Y rotation diversity
-was limited and the original combined-angle validation captures were incomplete.
-Board pitch was nominal20mm; scanner scale, robot absolute calibration and exact
-mount stability were not independently qualified.
+The fitted rotation preserves the camera's unusual mounting angle: about
+22.563° between optical +Z and flange +Z. In the moving model, the camera is
+attached to the wrist and follows the arm. I didn't carry over the early static
+preview's snapshot-only flange correction. The URDF/XRDF/USD descriptions include
+the camera attachment and the 23.15 mm Quick Changer/gripper stack extension.
 
-The saved result is a development estimate and was not issued by the manufacturer
-calibration tool or accepted for precision pickup. Projecting bracket geometry is
-approximate. Original result JSON retains diagnostic source paths as provenance;
-the supported saved-fit replay uses package-relative numerical input paths.
+The manufacturer mesh references and source URLs are in
+`results/photoneo_body_registration.json`. This repo contains the integration
+code and registration records; the CAD/robot assets and Isaac installation are
+separate.
 
-`source-identities.json` records original source hashes. `SHA256SUMS` verifies all
-files in the bundle.
+## Results and what still needs checking
+
+The 15-view fit gives **0.3321338 mm RMS over 2,104 points**. When I left out one
+view at a time, the largest mapped-point shift was **2.390 mm RMS**. Those numbers
+show how well the observations agree and how sensitive the estimate is. They
+don't establish the camera's absolute positioning accuracy.
+
+I had limited Y rotation, and the planned combined-angle validation captures
+weren't finished. I used a nominal 20 mm board pitch; the board dimensions,
+scanner scale, robot absolute calibration and mount stability still need
+independent checks. The projecting bracket geometry is approximate too.
+
+I'm treating this as a development estimate for now. I haven't validated it for
+precision pickup. Some original result JSON still contains old file paths for
+reference; the saved-fit replay uses paths within this repo.
