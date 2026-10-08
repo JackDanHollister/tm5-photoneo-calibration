@@ -79,6 +79,7 @@ frame against the vendor ROS description, saved frame metadata and the optical
 rays through the front windows. I kept the optical origin rather than moving the
 mesh origin to the centre of the housing.
 
+I only had a random mount so was not able to fit the MotionCam in an unusual angle.
 The fitted rotation preserves the camera's unusual mounting angle: about
 22.563° between optical +Z and flange +Z. In the moving model, the camera is
 attached to the wrist and follows the arm. I didn't carry over the early static
