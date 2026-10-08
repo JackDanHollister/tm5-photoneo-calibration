@@ -1,0 +1,11 @@
+{
+  "schema": "workcell.wrist_collision_config.v1",
+  "camera_padding_m": 0.005,
+  "sphere_cell_size_m": 0.025,
+  "adapter_radius_m": 0.035,
+  "support_bounds_flange_m": [[-0.105, -0.035, -0.005], [-0.025, 0.035, 0.050]],
+  "padding_status": "Development margin, not a measured calibration uncertainty bound",
+  "support_status": "Assumed occupied box joining the flange side to the housing; physical bracket enclosure is unverified",
+  "cable_routing_status": "Unknown; flexible cable path is not modelled and physical clearance cannot be qualified",
+  "physical_pick_allowed": false
+}

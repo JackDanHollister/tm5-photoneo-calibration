@@ -63,5 +63,17 @@
     "path": "results/translation_support.json",
     "sha256": "63b1f51c1949d0858aa95679247065124d076a15eeecb916ecf21ce1089bd45f",
     "byte_identical_source": true
+  },
+  {
+    "path": "config/wrist_collision.json",
+    "sha256": "4b5bea80629a5e0b345af64412f4588f024c7228f74ec1a1ec62711253df6e5e",
+    "byte_identical_source": true,
+    "matches_original_model_source_hash": true
+  },
+  {
+    "path": "config/wrist_mount.json",
+    "sha256": "f4e01c1914f59363502d7f0ed745a4c80152693de38e3e38c1ba55bf2ab89b95",
+    "byte_identical_source": true,
+    "matches_original_model_source_hash": true
   }
 ]

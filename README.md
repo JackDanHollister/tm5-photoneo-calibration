@@ -60,6 +60,7 @@ acquisition modules, and it blocks network connections while fitting.
 - `data/`: the numerical inputs for the replay and a note on how I exported them.
 - `results/`: the saved transform, diagnostics and camera-body registration.
 - `source/isaac_reference/`: the CAD/frame-registration and moving wrist scripts.
+- `config/`: the exact mounting and collision settings I used for the wrist model.
 
 The replay works from the supplied numerical inputs. Running the original image
 processing from scratch needs the original capture layout and raw images/point
@@ -87,6 +88,27 @@ The manufacturer mesh references and source URLs are in
 `results/photoneo_body_registration.json`. This repo contains the integration
 code and registration records; the CAD/robot assets and Isaac installation are
 separate.
+
+The original settings are in `config/wrist_collision.json` and
+`config/wrist_mount.json`. These match the configuration hashes recorded with
+the moving model. Here are the main values and where they came from:
+
+| Setting | Value | Basis |
+|---|---|---|
+| Adapter/cap stack extension | 23.15 mm | My approximate measurement in place, supported by the mounting documentation |
+| Camera collision padding | 5 mm on each side | Development margin |
+| Collision sphere cell size | 25 mm | Modelling setting |
+| Adapter radius bound | 35 mm | Assumed envelope |
+| Support bounds in flange coordinates | XYZ minimum (−105, −35, −5) mm; maximum (−25, 35, 50) mm | Assumed occupied box |
+
+I haven't measured the bracket envelope or flexible cable path. The padding and
+assumed bounds don't describe calibrated measurement accuracy.
+
+`wrist_mount.json` also keeps the earlier static preview settings: a 141 mm
+housing-centre radius, 35 mm flange-Z offset and zero optical tilt. Those were
+illustrative placeholders. The calibrated moving camera uses the fitted
+`T_flange_mesh_m` from `results/photoneo_body_registration.json` for its pose;
+those old static placement fields aren't used for that pose.
 
 ## Results and what still needs checking
 

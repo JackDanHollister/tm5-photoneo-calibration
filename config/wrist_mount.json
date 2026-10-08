@@ -1,0 +1,54 @@
+{
+  "schema": "specimen-workcell.wrist-visual.v1",
+  "identity": "Techman Benano C2100-400 flange adapter, camera bracket and IO cap",
+  "identity_evidence": "User recognised the manual drawing and confirmed the little cover on 2026-09-29.",
+  "scope": "Static visual draft; not a collision, calibration or dynamics model.",
+  "visual_components": ["adapter_and_cap", "camera_support_bracket", "photoneo_camera"],
+  "omitted_visual_components": [],
+  "camera_clocking": {
+    "status": "user_reported",
+    "view": "From above the flange in the user's current home pose, built-in EIH camera at 12 o'clock.",
+    "photoneo_clock_hour": 3,
+    "bracket_clock_hour": 3,
+    "clockwise_from_eih_deg": 90,
+    "visual_flange_direction": [-1, 0, 0],
+    "axis_mapping_basis": "Existing TM5S USD has the EIH housing along flange +Y. Looking from wrist toward tool (+Z), 3 o'clock maps to flange -X. This is a visual convention, not a measured controller transform."
+  },
+  "manual_url": "https://www2.tm-robot.com/wp-content/uploads/2022/03/benano-3d-camera-package_rev0.00_cn_gm.0325.pdf",
+  "adapter_and_cap_extension_m": 0.02315,
+  "extension_evidence": "Benano package manual v1.00, page 13. User reports approximately 23.15 mm measured in place on 2026-09-29; not a disassembled measurement of individual parts.",
+  "proxy_dimensions": {
+    "status": "Combined adapter/cap envelope and illustrative projecting camera support. Individual adapter/cap thicknesses and bracket dimensions unresolved.",
+    "adapter_radius_m": 0.035,
+    "centre_hole_radius_m": 0.012,
+    "bracket_width_m": 0.060,
+    "bracket_plate_height_m": 0.052,
+    "plate_thickness_m": 0.004
+  },
+  "photoneo_visual": {
+    "mesh_workspace_relative": "projects/tm5s-robot-arm-gui/perception/phoxi_ws/src/PhoXi-ROS-API/phoxi_camera_description/meshes/visual/MotionCam-3D-Color-S.stl",
+    "mesh_source": "https://github.com/photoneo/PhoXi-ROS-API/blob/abc843c89e873182b0de69cffa2b9f4c880e7796/phoxi_camera_description/meshes/visual/MotionCam-3D-Color-S.stl",
+    "mesh_units_to_m": 0.001,
+    "mesh_expected_extent_m": [0.308, 0.0679, 0.084954],
+    "body_bbox_centre_radius_m": 0.141,
+    "body_bbox_centre_flange_z_m": 0.035,
+    "body_long_axis": "12-6 in user's top view",
+    "body_rotation_in_bracket_deg": [0, 0, 180],
+    "attachment_description": "Camera bottom mounting face turned inward against the projecting bracket's end plate; lenses face along flange +Z in this illustrative pose.",
+    "placement_status": "Illustrative: 141 mm radial distance, 35 mm flange-Z offset, 12-6 long-axis direction and zero tilt are unmeasured placeholders. Only the 3 o'clock mounting side is user-confirmed. Bounding-box centre is not centre of mass or optical origin."
+  },
+  "mount_mass_kg": 0.35732,
+  "mount_mass_evidence": {
+    "status": "user_measured",
+    "date": "2026-09-29",
+    "reported_part_masses_g": [40, 41.22, 128.33, 147.77],
+    "includes_screws": true,
+    "scope": "Combined mounting hardware, interpreted from the adapter-weight discussion. Individual readings have not been mapped to named components; this is not the mass of the visible adapter/cap envelope alone.",
+    "measurement_uncertainty_g": null
+  },
+  "mount_cog_xyz_m": null,
+  "original_benano_complete_assembly_mass_kg": 0.917,
+  "mass_scope": "917 g includes the original Benano camera. It is not the mounting hardware mass or current Photoneo assembly mass.",
+  "tool_stack": ["robot_flange", "benano_adapter_and_io_cap", "onrobot_quick_changer", "onrobot_2fg7"],
+  "camera_registration": "Photoneo body shown at the reported 3 o'clock side; full body pose and hand-eye transform remain unmeasured."
+}
