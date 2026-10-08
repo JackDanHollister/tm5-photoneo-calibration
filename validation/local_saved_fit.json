@@ -1,0 +1,187 @@
+{
+  "software": "Custom Python; OpenCV PARK/HORAUD initialisation, SciPy soft-L1 metric refinement",
+  "manufacturer_robot_calibration_tool_used": false,
+  "T_flange_photoneo": [
+    [
+      0.09458762042992924,
+      0.9644253691455431,
+      0.24685398398625558,
+      -86.89705601060537
+    ],
+    [
+      -0.9557034181870379,
+      0.018544923633823374,
+      0.2937465953386144,
+      -97.60441633820774
+    ],
+    [
+      0.2787187803629595,
+      -0.26370398775122555,
+      0.9234587420762693,
+      80.5810334578029
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "units": "mm",
+  "convention": "T_A_B maps homogeneous column-vector points from B into A",
+  "registration": "p_base = T_base_flange @ T_flange_photoneo @ p_primary_camera",
+  "coordinate_space": "Saved Photoneo CameraSpace / PrimaryCamera optical frame",
+  "fit_residual_mm": {
+    "count": 2104,
+    "rms": 0.3321337781356098,
+    "median": 0.2587846261645697,
+    "p95": 0.6138118437384665,
+    "max": 1.0266556042345938
+  },
+  "views": 15,
+  "T_base_board_by_batch": {
+    "tilts": [
+      [
+        0.03801032297932665,
+        -0.9992655740847791,
+        0.004850545951107265,
+        526.9333872080447
+      ],
+      [
+        -0.9992376535899048,
+        -0.038051629600448236,
+        -0.008728409528172595,
+        122.26750278767311
+      ],
+      [
+        0.008906570335907934,
+        -0.004515078489552765,
+        -0.9999501422926468,
+        5.612785290272019
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "translations": [
+      [
+        0.037622346117289915,
+        -0.9992804220621786,
+        0.0048163425816976895,
+        527.0553394349905
+      ],
+      [
+        -0.9992464472600252,
+        -0.03766622759314993,
+        -0.00936978853113172,
+        121.93801222567578
+      ],
+      [
+        0.009544459693871474,
+        -0.004460199786384542,
+        -0.9999445034135729,
+        5.472015223585286
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "difference_from_saved_estimate": {
+    "origin_difference_mm": 1.5936315648917311e-06,
+    "rotation_difference_deg": 0.0
+  },
+  "tilt_excitation": {
+    "fit_point_residual_mm": {
+      "count": 997,
+      "rms": 0.3835300964070878,
+      "median": 0.30820448654477267,
+      "p95": 0.6916327485620303,
+      "max": 1.1437706644350858
+    },
+    "orientation_excitation_singular_values": [
+      0.2233653585297664,
+      0.210737465056106,
+      0.07403920737936018
+    ],
+    "original_design_minimum_singular_value": 0.1,
+    "meets_original_excitation_gate": false,
+    "exploratory_limited_excitation_allowed": true,
+    "optimizer_evaluations": 16,
+    "closed_form_methods": {
+      "PARK": {
+        "transform": [
+          [
+            0.09757386204012805,
+            0.9635425703397649,
+            0.24912859448407979,
+            -86.00127322396594
+          ],
+          [
+            -0.953885988519842,
+            0.019143792882891076,
+            0.2995580679928024,
+            -97.76815065431867
+          ],
+          [
+            0.28386768458578326,
+            -0.2668693132173434,
+            0.9209776909951789,
+            81.49183711065524
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "difference_from_refined": {
+          "origin_difference_mm": 4.57083772579022,
+          "rotation_difference_deg": 1.777018937270117
+        }
+      },
+      "HORAUD": {
+        "transform": [
+          [
+            0.09757215430707489,
+            0.9635425164535714,
+            0.24912947174149214,
+            -86.00124547818456
+          ],
+          [
+            -0.9538861710427684,
+            0.019141969229086953,
+            0.299557603320961,
+            -97.76815057322098
+          ],
+          [
+            0.2838676582445453,
+            -0.26686963858848983,
+            0.9209776048321733,
+            81.49184280992505
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "difference_from_refined": {
+          "origin_difference_mm": 4.57083518125429,
+          "rotation_difference_deg": 1.7770103107789605
+        }
+      }
+    }
+  },
+  "physical_accuracy_validated": false,
+  "limits": "Reproduces original limited-excitation development fit; numerical residual is not absolute accuracy",
+  "hardware_contact": false
+}

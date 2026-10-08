@@ -1,0 +1,67 @@
+[
+  {
+    "path": "source/calibration/analyse_partial_calibration.py",
+    "sha256": "ac503e8d897401dfb8a9067e89f77947dc7cfe537b980423287a832a22ba5799",
+    "byte_identical_source": true
+  },
+  {
+    "path": "source/calibration/analyse_tilt_calibration.py",
+    "sha256": "a6dd738a9710acc6159903b9d25e21364b7c2a7c28eda65aab08991ff0d8cbdf",
+    "byte_identical_source": true
+  },
+  {
+    "path": "source/calibration/analyse_translation_calibration.py",
+    "sha256": "9afd1b3f4e154c719d07a1cc05026570e98d21ff58ba700296dbba3de0dda3db",
+    "byte_identical_source": true
+  },
+  {
+    "path": "source/calibration/check_translation_support.py",
+    "sha256": "61e1b8cf57a32d8643ccf2314e3d7b682cd2cb7df58268a1908614631e5ea8ab",
+    "byte_identical_source": true
+  },
+  {
+    "path": "source/calibration/fit_camera_alignment.py",
+    "sha256": "55f36248bd16520c70537ecb7026e1f66689c3dceb7d94c27ba5357c9d355cdb",
+    "byte_identical_source": true
+  },
+  {
+    "path": "source/calibration/test_tilt_calibration.py",
+    "sha256": "7731ccb77f0fb81d6d58864fe704febc3df2d73d01916277035c0c0779cf807a",
+    "byte_identical_source": true
+  },
+  {
+    "path": "source/isaac_reference/build_photoneo_body_registration.py",
+    "sha256": "3101d4867d5f24ad6ebddba8125693e2c86f21f4985a859e6f38b484855a16a2",
+    "byte_identical_source": true
+  },
+  {
+    "path": "source/isaac_reference/preview_wrist_mount.py",
+    "sha256": "3d6661f3a17ec0261d9147906a06af8eab2caa608b5890cd8088505b71d01dc8",
+    "byte_identical_source": true
+  },
+  {
+    "path": "source/isaac_reference/build_wrist_collision_model.py",
+    "sha256": "5256f7460d34bdc3a2444f390b659f939b3a9e72f6dca534228d4dd7e24ed507",
+    "byte_identical_source": true
+  },
+  {
+    "path": "source/isaac_reference/build_moving_wrist_usd.py",
+    "sha256": "4e96d91a8fab9e93881d8c1ad5e5f55a3d2fe2a7e9c3c62d43888c02828d07bd",
+    "byte_identical_source": true
+  },
+  {
+    "path": "results/photoneo_handeye_offline_candidate.json",
+    "sha256": "5cf19b6629bd7dd783c5011b314fe3d371fd26240e4bbb4657ce37d6f939c3ee",
+    "byte_identical_source": true
+  },
+  {
+    "path": "results/photoneo_body_registration.json",
+    "sha256": "7aae73ca19a52dd98c4c2e5b825ae33fae275a245a0f86928bb6d66cbb866b6f",
+    "byte_identical_source": true
+  },
+  {
+    "path": "results/translation_support.json",
+    "sha256": "63b1f51c1949d0858aa95679247065124d076a15eeecb916ecf21ce1089bd45f",
+    "byte_identical_source": true
+  }
+]

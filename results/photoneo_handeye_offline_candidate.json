@@ -1,0 +1,91 @@
+{
+  "schema": "workcell.photoneo_offline_calibration.v1",
+  "calibration_id": "20260930_saved_translation_and_tilt_draft",
+  "status": "draft_limited_retrospective_validation",
+  "applied_to_robot_or_runtime": false,
+  "accepted_for_specimen_pickup": false,
+  "authoritative_runtime_calibration": false,
+  "camera": "Photoneo MotionCam-3D Color S Blue FPA-001",
+  "camera_coordinates": "PrimaryCamera CameraSpace",
+  "units": "mm",
+  "convention": "T_A_B maps homogeneous column vectors from B into A",
+  "registration_equation": "point_base = T_base_flange @ T_flange_photoneo @ point_photoneo",
+  "T_flange_photoneo": [
+    [
+      0.09458762219559652,
+      0.9644253674418859,
+      0.24685398996566082,
+      -86.89705572885795
+    ],
+    [
+      -0.9557034165612481,
+      0.018544922056219215,
+      0.29374660072771264,
+      -97.60441608342875
+    ],
+    [
+      0.27871878533844924,
+      -0.26370399409283174,
+      0.9234587387636478,
+      80.58103500550042
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "fit_labels": [
+    "origin_start",
+    "x_m8",
+    "x_p8",
+    "y_m3",
+    "y_p3",
+    "x_m3",
+    "x_p3",
+    "translation_origin_start",
+    "translation_x_plus",
+    "translation_y_plus",
+    "translation_z_away",
+    "translation_x_minus",
+    "translation_y_minus",
+    "translation_z_toward",
+    "translation_origin_end"
+  ],
+  "board_model": "nominal 20 mm pitch; independent fixed board pose per capture batch",
+  "fit_residual_mm": {
+    "count": 2104,
+    "rms": 0.33213377750075246,
+    "median": 0.25878462369396504,
+    "p95": 0.6138118737636992,
+    "max": 1.026655501442249
+  },
+  "retrospective_check_count": 6,
+  "retrospective_check_rms_range_mm": [
+    0.23148760584927025,
+    0.3754793346812405
+  ],
+  "maximum_leave_one_view_out_registered_point_shift_rms_mm": 2.3901554937614624,
+  "maximum_leave_one_view_out_camera_origin_shift_mm": 1.4066528528962532,
+  "maximum_leave_one_view_out_camera_rotation_shift_deg": 0.25867210519515454,
+  "difference_from_previous_eih_chain": {
+    "origin_difference_mm": 3.0115554878097903,
+    "rotation_difference_deg": 0.7103869818177095
+  },
+  "alternate_initial_seed_difference": {
+    "origin_difference_mm": 2.843486302480881e-06,
+    "rotation_difference_deg": 1.7075472925031877e-06
+  },
+  "source_report": "translation_support/translation_support.json",
+  "source_report_sha256": "63b1f51c1949d0858aa95679247065124d076a15eeecb916ecf21ce1089bd45f",
+  "limitations": [
+    "Retrospective subset checks and leave-one-out tests share target, robot, intrinsics and camera; not absolute metrology",
+    "All 15-view fit uses check views too; reported check errors belong to the separate nine-view fit",
+    "Y rotation only plus/minus 3 degrees; original tilt excitation gate is not met",
+    "No combined-angle or final-origin tilt images; y_m8 and y_p8 excluded because board absent",
+    "Rigid unchanged camera mount across both batches is assumed",
+    "Frame placement remains sensitive at millimetre level; sensitivity is not a guaranteed error bound",
+    "No centre of mass, tool TCP, collision model, grasp or real motion qualification"
+  ]
+}

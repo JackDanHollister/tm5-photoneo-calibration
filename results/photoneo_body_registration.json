@@ -1,0 +1,237 @@
+{
+  "schema": "workcell.photoneo_body_registration.v1",
+  "status": "estimated_optical_pose_with_nominal_vendor_housing",
+  "scope": "Offline visual registration only; no controller, physical collision or centre-of-mass qualification",
+  "hardware_commands": false,
+  "applied_to_robot_or_runtime": false,
+  "vendor_commit": "abc843c89e873182b0de69cffa2b9f4c880e7796",
+  "mesh_origin_policy": "Retain native vendor mesh coordinates; never replace optical origin with housing bbox centre",
+  "nominal_T_primary_camera_mesh_mm": [
+    [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "T_flange_primary_camera_mm": [
+    [
+      0.09458762219559652,
+      0.9644253674418859,
+      0.24685398996566082,
+      -86.89705572885795
+    ],
+    [
+      -0.9557034165612481,
+      0.018544922056219215,
+      0.29374660072771264,
+      -97.60441608342875
+    ],
+    [
+      0.27871878533844924,
+      -0.26370399409283174,
+      0.9234587387636478,
+      80.58103500550042
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "T_flange_mesh_m": [
+    [
+      0.09458762219559652,
+      0.9644253674418859,
+      0.24685398996566082,
+      -0.08689705572885795
+    ],
+    [
+      -0.9557034165612481,
+      0.018544922056219215,
+      0.29374660072771264,
+      -0.09760441608342875
+    ],
+    [
+      0.27871878533844924,
+      -0.26370399409283174,
+      0.9234587387636478,
+      0.08058103500550043
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "T_primary_colour_camera_mm": [
+    [
+      0.9940990307005102,
+      0.011783687721032346,
+      0.1078344187353894,
+      -163.6420597689041
+    ],
+    [
+      -0.011188766956814079,
+      0.9999186729493394,
+      -0.006120374271046371,
+      -1.4891359737829302
+    ],
+    [
+      -0.10789776945929982,
+      0.00487772394921776,
+      0.9941500284940815,
+      -5.104380388452902
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "T_flange_colour_camera_mm": [
+    [
+      0.05660373795793833,
+      0.966665610192213,
+      0.24970705821202843,
+      -105.07176622746688
+    ],
+    [
+      -0.9819659378565938,
+      0.008714518067093084,
+      0.18885696721137574,
+      57.26184923233869
+    ],
+    [
+      0.18038545877816592,
+      -0.25589383589014914,
+      0.9497259768032125,
+      30.64992530477283
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "native_mesh_bounds_mm": [
+    [
+      -257.89251708984375,
+      -38.10974884033203,
+      -73.20005798339844
+    ],
+    [
+      50.10886764526367,
+      29.790014266967773,
+      11.753515243530273
+    ]
+  ],
+  "native_bbox_centre_mm": [
+    -103.89182472229004,
+    -4.159867286682129,
+    -30.723271369934082
+  ],
+  "body_bbox_centre_flange_mm": [
+    -108.31998005383493,
+    -7.416645186302745,
+    24.349732000730242
+  ],
+  "camera_forward_flange": [
+    0.24685398996566082,
+    0.29374660072771264,
+    0.9234587387636478
+  ],
+  "camera_forward_tilt_from_flange_z_deg": 22.56291830787305,
+  "body_long_axis_in_flange": [
+    0.09458762219559652,
+    -0.9557034165612481,
+    0.27871878533844924
+  ],
+  "body_clockwise_angle_from_flange_plus_y_deg": 93.91691606360264,
+  "optical_axes_intersect_nominal_front_windows": {
+    "primary": [
+      {
+        "distance_mm": 5.90999985,
+        "point_mm": [
+          0.0,
+          0.0,
+          5.90999985
+        ]
+      },
+      {
+        "distance_mm": 6.71000004,
+        "point_mm": [
+          0.0,
+          0.0,
+          6.71000004
+        ]
+      }
+    ],
+    "colour": [
+      {
+        "distance_mm": 11.0691356,
+        "point_mm": [
+          -162.4484259655749,
+          -1.5568832265118937,
+          5.90000108369195
+        ]
+      },
+      {
+        "distance_mm": 11.87290517,
+        "point_mm": [
+          -162.36175194119673,
+          -1.5618025971079716,
+          6.699068624610125
+        ]
+      }
+    ]
+  },
+  "basis": [
+    "Saved CameraSpace / PrimaryCamera output has identity world-to-camera matrix",
+    "Vendor xacro places native millimetre STL at identity in phoxi_camera_sensor link",
+    "Primary and saved factory RGB optical rays intersect the corresponding nominal window surfaces",
+    "Nominal housing dimensions agree with Color S drawings; manufacturer CAD is not unit-specific mechanical metrology"
+  ],
+  "source_urls": {
+    "vendor_model": "https://github.com/photoneo/PhoXi-ROS-API/tree/abc843c89e873182b0de69cffa2b9f4c880e7796/phoxi_camera_description",
+    "coordinate_manual": "https://docs.photoneo.com/docs/3d_sensors/1.17/software/PXC/PXC_manual.html#coordinate-settings-photoneo-3d-sensor",
+    "mechanical_manual": "https://www.photoneo.com/files/dw/dw/devices/Photoneo3DSensors-UserManual05-2026-v1.0.pdf#page=43"
+  },
+  "limits": [
+    "Optical pose remains the offline draft; largest measured leave-one-view-out point shift was 2.39 mm RMS, not an accuracy bound",
+    "Native mesh-to-primary-camera identity is supported for nominal visualisation, not a certified per-device tolerance",
+    "Housing bounding-box centre is not centre of mass, mounting-hole centre or TCP",
+    "Projecting bracket geometry and exact fastener engagement are not recovered by this optical calibration",
+    "Vendor demonstration base_link translation and generic inertial values are not mounting or mass measurements"
+  ],
+  "source_hashes": {
+    "/home/ai-user/Desktop/SpecimenWorkcell/20260929-mounted-drawer/offline_calibration_20260930/photoneo_handeye_offline_candidate.json": "5cf19b6629bd7dd783c5011b314fe3d371fd26240e4bbb4657ce37d6f939c3ee",
+    "/home/ai-user/Desktop/SpecimenWorkcell/20260929-mounted-drawer/calibration_tilts/captures/origin_start/photoneo/scan_001.json": "90be9c2a3cdfd382b29880d405c00275764f2855934bc3ab6981c31efe0665e8",
+    "/home/ai-user/the-magi-thor-edition/projects/tm5s-robot-arm-gui/perception/phoxi_ws/src/PhoXi-ROS-API/phoxi_camera_description/meshes/visual/MotionCam-3D-Color-S.stl": "6f68878ce3d8ce9b62b857b9950a728d0d5bd4842c6e8b2ae4a1b90cb77a4064",
+    "/home/ai-user/the-magi-thor-edition/projects/tm5s-robot-arm-gui/perception/phoxi_ws/src/PhoXi-ROS-API/phoxi_camera_description/urdf/phoxi_camera.urdf.xacro": "b5458c8395a12f709f0496539461f4f3df01fec7a3fa66954485b69de9e7d47a",
+    "/home/ai-user/the-magi-thor-edition/projects/tm5s-robot-arm-gui/perception/phoxi_ws/src/PhoXi-ROS-API/phoxi_camera_description/urdf/models/MotionCam-3D-Color-S.xacro": "330d87f8ae016e3a9f4ed73d74acbfc2a9003af2541a547c0740bacc66dfe5c8"
+  },
+  "script_sha256": "3101d4867d5f24ad6ebddba8125693e2c86f21f4985a859e6f38b484855a16a2"
+}
